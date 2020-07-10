@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './graphView.css'
 import { IGraphData } from '../types/tableData';
 
@@ -20,25 +20,24 @@ class GraphView extends React.Component<IProps, any> {
         const axisdata = [Math.round(yData), Math.round(2 * yData), Math.round(3 * yData), Math.round(4 * yData)];
 
         return (<div className='graph-container'>
-
-            <LineChart
-                width={window.innerWidth - 120}
-                height={250}
-                resize={true}
-                data={this.props.graphData}
-                margin={{ bottom: 5 }}
-                display={'grid'}
-            >
-                <CartesianGrid stroke='#f5f5f5' />
-                <CartesianGrid stroke='#f5f5f5' />
-                <CartesianGrid stroke='#f5f5f5' />
-                <Tooltip />
-                <Line dataKey='votes' stroke='blue' fill='blue' />
-                <XAxis dataKey='id' ticks={xAData} label={<AxisLabel height={20} width={50} x={400} y={200} axisType='xAxis'> ID </AxisLabel>} height={100} interval={0} angle={-90} dy={30} />
-                <YAxis dataKey='votes' ticks={axisdata} label={<AxisLabel height={100} width={20} x={12} y={0} axisType='yAxis'>Votes</AxisLabel>} />
+            <ResponsiveContainer
+                width={'99%'}
+                height={400}>
+                <LineChart
+                    data={this.props.graphData}
+                    margin={{ bottom: 5 }}
+                >
+                    <CartesianGrid stroke='#f5f5f5' />
+                    <CartesianGrid stroke='#f5f5f5' />
+                    <CartesianGrid stroke='#f5f5f5' />
+                    <Tooltip />
+                    <Line dataKey='votes' stroke='blue' fill='blue' />
+                    <XAxis dataKey='id' ticks={xAData} label={<AxisLabel height={20} width={50} x={400} y={200} axisType='xAxis'> ID </AxisLabel>} height={100} interval={0} angle={-90} dy={30} />
+                    <YAxis dataKey='votes' ticks={axisdata} label={<AxisLabel height={100} width={20} x={12} y={0} axisType='yAxis'>Votes</AxisLabel>} />
 
 
-            </LineChart>
+                </LineChart>
+            </ResponsiveContainer>
         </div>
         );
     }
