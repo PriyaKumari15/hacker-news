@@ -87,7 +87,7 @@ class InfoTable extends React.Component<IProps, any> {
 
     public async fetchData(page) {
         this.isLoading = true;
-        const url = `http://hn.algolia.com/api/v1/search?page=${page}`;
+        const url = `https://hn.algolia.com/api/v1/search?page=${page}`;
 
         if (page >= 0 && this.pagnationData.nbPages >= page) {
 

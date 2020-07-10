@@ -1,4 +1,4 @@
-This Project is mimic the feature of Hacker news with extra features like line graph for votes per news and pagination. This project is built with React, Redux, JavaScript, and CSS.
+This Project mimics the website Hacker news [https://news.ycombinator.com/](https://news.ycombinator.com/) with some extra features like **line chart** (votes per news) and **pagination**. This project is built with React, Redux, JavaScript, and CSS.
 
 ## Available Scripts
 
