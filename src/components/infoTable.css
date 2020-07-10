@@ -90,3 +90,15 @@
 .hover {
   cursor: pointer;
 }
+.padding {
+  padding-left: 10px;
+}
+.font {
+  font-weight: bold;
+}
+.font-13 {
+  font-size: 13px;
+}
+.min-padding {
+  padding-left: 5px;
+}

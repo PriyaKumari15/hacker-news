@@ -63,11 +63,11 @@ class InfoTable extends React.Component<IProps, any> {
                             <div className='grid-item'>{hit.points}</div>
                             <div className='grid-item hover' onClick={() => this.updateVoteData(hit)}><Icon name={'caret up'} /></div>
                             <div className='grid-item-alt'>
-                                <label className='grid-item-alt-sub' style={{ fontSize: '13px' }}>{hit.title || ' Not Available'}
-                                    <label className='grid-item-alt-sub' style={{ paddingLeft: 10 }}>{`( ${hit.url || 'URL Not available'} ) by `}
-                                        <label className='grid-item-alt-sub' style={{ fontWeight: 'bold' }}>{`${hit.author} `}</label>
-                                        <label className='grid-item-alt-sub' style={{ paddingLeft: 5 }}>{this.convertTime(hit.created_at)}
-                                            <label className='grid-item-alt-sub hover' style={{ paddingLeft: 10, fontWeight: 'bold' }} onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
+                                <label className='grid-item-alt-sub font-13'>{hit.title || ' Not Available'}
+                                    <label className='grid-item-alt-sub padding'>{`( ${hit.url || 'URL Not available'} ) by `}
+                                        <label className='grid-item-alt-sub font'>{`${hit.author} `}</label>
+                                        <label className='grid-item-alt-sub min-padding'>{this.convertTime(hit.created_at)}
+                                            <label className='grid-item-alt-sub hover padding bold' onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
                             </div>
                         </div>
                     )
