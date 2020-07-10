@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["node"],
     "allowJs": true,
     "strictNullChecks": false,
     "allowSyntheticDefaultImports": true,
@@ -12,21 +13,13 @@
     "noImplicitAny": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist/web",
     "preserveConstEnums": true,
     "removeComments": true,
     "rootDir": "src",
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es5",
-    "typeRoots": [
-      "src",
-      "node_modules/@types"
-    ],
-    "lib": [
-      "dom",
-      "es6",
-      "scripthost"
-    ],
+    "typeRoots": ["src", "node_modules/@types"],
+    "lib": ["dom", "es6", "scripthost"],
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strict": true,
@@ -47,7 +40,5 @@
     "**/*.mobile.android.tsx",
     "**/*.mobile.android.ts"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

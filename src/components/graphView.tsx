@@ -3,10 +3,17 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import './graphView.css'
+import { IGraphData } from '../types/tableData';
 
+interface IProps {
+    graphData: IGraphData[];
+}
 
-class GraphView extends React.Component {
-    public chart;
+class GraphView extends React.Component<IProps, any> {
+
+    public constructor(props) {
+        super(props);
+    }
     public render() {
         const xAData = this.props.graphData.map((d) => { return d.id });
         const yData = (this.props.graphData.map((d) => { return d.votes }).sort((a, b) => b - a)[0] / 4);
@@ -47,9 +54,8 @@ const AxisLabel = ({ axisType, x, y, width, height, children }) => {
         </text>
     );
 };
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: any) => {
     return {
-        ...props,
         graphData: state.graph,
     }
 }

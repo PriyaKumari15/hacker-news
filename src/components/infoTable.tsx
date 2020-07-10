@@ -6,13 +6,16 @@ import { IHits, IPage } from '../types/tableData';
 import { removeData, removeNews, updateVote, updateVoteGraph, updateNewsList, updateGraph } from '../actions';
 import './infoTable.css'
 
-// interface IProps {
-//     list: IHits[];
-//     removeNews: (news: any) => null;
-//     updateNews: (newsList: any) => null;
-//     updateGraph: (graphDate: any) => null;
-// }
-class InfoTable extends React.Component {
+interface IProps {
+    list: IHits[];
+    removeNews: (news: any) => null;
+    updateNews: (newsList: any) => null;
+    updateGraph: (graphDate: any) => null;
+    updateVote: (news: any) => null;
+    updateVoteGraph: (news: any) => null;
+    removeData: (news: any) => null;
+}
+class InfoTable extends React.Component<IProps, any> {
     public pagnationData: IPage;
     public hitsData: IHits[] = [];
     public isLoading: boolean = true;
@@ -58,13 +61,13 @@ class InfoTable extends React.Component {
                         <div className={i % 2 ? 'grid-container-alt' : 'grid-container'}>
                             <div className='grid-item'>{hit.num_comments || 0}</div>
                             <div className='grid-item'>{hit.points}</div>
-                            <div className='grid-item' onClick={() => this.updateVoteData(hit)}><Icon name={'caret up'} /></div>
+                            <div className='grid-item hover' onClick={() => this.updateVoteData(hit)}><Icon name={'caret up'} /></div>
                             <div className='grid-item-alt'>
                                 <label className='grid-item-alt-sub' style={{ fontSize: '13px' }}>{hit.title || ' Not Available'}
                                     <label className='grid-item-alt-sub' style={{ paddingLeft: 10 }}>{`( ${hit.url || 'URL Not available'} ) by `}
                                         <label className='grid-item-alt-sub' style={{ fontWeight: 'bold' }}>{`${hit.author} `}</label>
                                         <label className='grid-item-alt-sub' style={{ paddingLeft: 5 }}>{this.convertTime(hit.created_at)}
-                                            <label className='grid-item-alt-sub' style={{ paddingLeft: 10, fontWeight: 'bold' }} onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
+                                            <label className='grid-item-alt-sub hover' style={{ paddingLeft: 10, fontWeight: 'bold' }} onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
                             </div>
                         </div>
                     )
@@ -74,9 +77,9 @@ class InfoTable extends React.Component {
                         <div className='grid-item'><Loader active /></div></div>}
                 <div className='grid-container-footer'>
                     <div className='grid-item-footer'>
-                        <label className={'text-footer'} onClick={() => this.fetchData(this.pagnationData.page - 1)}>{'Previous'}</label>
+                        <label className={'text-footer hover'} onClick={() => this.fetchData(this.pagnationData.page - 1)}>{'Previous'}</label>
                         <label className={'text-footer'}>{' | '}</label>
-                        <label className={'text-footer'} onClick={() => this.fetchData(this.pagnationData.page + 1)} > {'Next'}</label></div>
+                        <label className={'text-footer hover'} onClick={() => this.fetchData(this.pagnationData.page + 1)} > {'Next'}</label></div>
                 </div>
             </div >
         );
@@ -89,9 +92,8 @@ class InfoTable extends React.Component {
         if (page >= 0 && this.pagnationData.nbPages >= page) {
 
             const data = await fetch(url, { method: 'GET' });
-
-            const response = await data.json();
             this.isLoading = false;
+            const response = await data.json();
             if (response) {
 
                 this.hitsData = this.updateWithStoredData(response.hits);
@@ -115,14 +117,14 @@ class InfoTable extends React.Component {
     public updateWithStoredData = (news: IHits[]) => {
         const cloneNews = [...news];
         const newData: IHits[] = [];
-        const updateVoteData = cloneNews.map((c, j) => {
+        const updateVoteData = cloneNews.map((c) => {
             const voted = this.recentVoted && this.recentVoted.find((h) => h.id === c.objectID);
             if (voted) {
                 const news = { ...c, points: voted.votes };
                 return news;
             } else { return c; }
         });
-        updateVoteData.forEach((c, i) => {
+        updateVoteData.forEach((c) => {
             const hidden = this.hiddenData && this.hiddenData.find((h) => h === c.objectID);
             if (!hidden) {
                 newData.push(c);
@@ -191,7 +193,7 @@ const mapDispatchToProps = (dispatch: any) => (
         updateGraph: (graphDate: any) => dispatch(updateGraph(graphDate))
     }
 );
-const mapStateToProps = (state: any, props: any) => {
+const mapStateToProps = (state: any) => {
     return {
         list: state.news,
     }
