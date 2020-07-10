@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This Project is mimic the feature of Hacker news with extra features like line graph for vote per news and pagination which is built with React, Redux, JavaScript, and CSS.
 
 ## Available Scripts
 

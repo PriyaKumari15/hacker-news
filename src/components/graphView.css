@@ -1,0 +1,7 @@
+.graph-container {
+  display: grid;
+  border-bottom: 2px solid #fc4b05;
+  margin-left: 50px;
+  margin-right: 50px;
+  align-content: stretch;
+}
