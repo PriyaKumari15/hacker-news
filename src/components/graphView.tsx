@@ -32,8 +32,8 @@ class GraphView extends React.Component<IProps, any> {
                     <CartesianGrid stroke='#f5f5f5' />
                     <Tooltip />
                     <Line dataKey='votes' stroke='blue' fill='blue' />
-                    <XAxis dataKey='id' ticks={xAData} label={<AxisLabel height={20} width={50} x={400} y={200} axisType='xAxis'> ID </AxisLabel>} height={100} interval={0} angle={-90} dy={30} />
-                    <YAxis dataKey='votes' ticks={axisdata} label={<AxisLabel height={100} width={20} x={12} y={0} axisType='yAxis'>Votes</AxisLabel>} />
+                    <XAxis dataKey='id' ticks={xAData} label={<AxisLabel height={20} width={50} x={600} y={350} axisType='xAxis'> ID </AxisLabel>} height={100} interval={0} angle={-90} dy={30} />
+                    <YAxis dataKey='votes' ticks={axisdata} label={<AxisLabel height={100} width={20} x={12} y={100} axisType='yAxis'>Votes</AxisLabel>} />
 
 
                 </LineChart>

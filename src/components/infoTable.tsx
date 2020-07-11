@@ -67,7 +67,7 @@ class InfoTable extends React.Component<IProps, any> {
                                     <label className='grid-item-alt-sub padding'>{`( ${hit.url || 'URL Not available'} ) by `}
                                         <label className='grid-item-alt-sub font'>{`${hit.author} `}</label>
                                         <label className='grid-item-alt-sub min-padding'>{this.convertTime(hit.created_at)}
-                                            <label className='grid-item-alt-sub hover padding bold' onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
+                                            <label className='grid-item-alt-sub hover padding font' onClick={() => this.updateGraph(hit)}>{'[ Hide ]'}</label></label></label></label>
                             </div>
                         </div>
                     )
